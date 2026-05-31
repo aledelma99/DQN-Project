@@ -1,0 +1,46 @@
+Full Name: Alessandro Delmastro
+Course: Deep Learning Applications
+GitHub link: https://github.com/aledelma99/DQN-Project
+Project Name : LunarLanderV3: A Comparison of Different DQN Agents' Performance
+
+This GitHub repository contains all the necessary instruments to run the project from scratch, starting from the training of the agent,  passing through the plots of the training and to the final part, in which the ressults from both the phases are evaluated and commented.
+
+This repository is organized in this way:
+
+- DQN_tools.py: As the name suggests, this is the file in which all the tools used in the training and testing files are contained. There will be the class related to the agent itself, the one of the neural networks, and the one of memory buffer. They can also be found the functions used to train and test the different agents, and to plot the results, in a way that they can be evaluated properly.
+
+- Training.ipynb: This Notebook composed of different cells, contains all the code to run the training of the agents and to store the results inside the checkpoint folder (always inside this zip file);
+
+- Testing.ipynb: This is the Notebook in which first, the plots of the training session will be evaluated and secondly, the performances of the different agents will be assessed. This notebook will also comprehend a breif discussion of the results of this projects, using the results coming from either train and test phases.
+
+- checkpoints: This folder will contains all the single files saved by the save_model function, such as the weights of the networks, a flag denoting if the environment was solved or not, and all the metrics computed during the training (estimates of the Q functions for a fixed set of states, avg rewards, time length of episodes). These files are useful if the training and turned on again in a second moment, and to load the models in the file "Testing.ipynb" to compute the final evaluation.
+
+How to use this repository:
+
+1. After receiving the link from the mail, go to google colab using the link "https://colab.research.google.com/".
+    1.1 Once you do the login, a popup will appear asking you to open the notebooks. On the right, there will be a   menù with different possible choices, you have to press the one called "GitHub".
+    1.2 Now, it should appear to you a cell in which you have to append a GitHub link; use the one provided at the beginning of this file (https://github.com/aledelma99/DQN-Project).
+    1.3 If there are no problem, you should see the files Training.ipynb, Testing.ipynb, and a branch called main. You need to open the two aforementioned files.
+
+2. To compute the training, open the file "Training.ipynb" and run cell by cell. 
+    
+    2.1 At the beginning, all the necessary libraries will be imported (and downloaded if necessary); the same applies for the functions and classes inside "DQN_tools.py" used for the training.
+    
+    2.2 The cells below are used to setup the environments, instantiate the parameters used to regulate the length of the training and the configurations dictionary, which contains the          hyperparameters that changes across the different configurations.
+    
+    2.3 The last cell is the one responsible of the whole training. The 2 for-loops inside it will run 5 training session for each configuration. The results will be stored               progressively inside the folder called "checkpoint", which will be created if not present at the beginning.
+
+3 When the whole training is ended, it's the time to evaluate the trained agents. For this purpose, open the last file: "Testing.ipynb" and run all the cells inside it.
+
+    3.1 As for "Training.ipynb", the first cell has the objective to import (or download) the libraries used in this last notebook, while the second is used to retrieve functions         necessary to plot the training results and the test evaluattion. By running them, the setting for this final step will be completed.
+
+    3.2 Run the cell containing the function "plot_experiments_grid_universal" to plot a 5x5 plot, containing the evolution of all the metrics computed during the training, across 
+    all the configurations.
+    
+    3.3 To conclude the work, run the cell containing the function denoted as "test_all_experiments_aggregated" to run the final test experiment. 
+    There are 2 parameters that can be changed in this setting :
+    - "success_threshold": The score above which an episode is considered successful (default     is 200, which is the official environment threshold for LunarLander).
+    - "num_test_episodes": regulates the number of test episodes performed during this phase     for each configuration. The higher the number of test episodes, the longer the length of     this     cell's execution time.
+
+    3.4 Read the final discussion section at the bottom of the notebook, which summarizes and compares all the findings of this project.
+
